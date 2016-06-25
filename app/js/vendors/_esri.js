@@ -54,7 +54,7 @@ require([
         "type": "simple",
         "symbol": {
           "type": "esriPMS",
-          "url": "images/flickr.png",
+          "url": "images/wifi_3.png",
           "contentType": "image/png",
           "width": 15,
           "height": 15
