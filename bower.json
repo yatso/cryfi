@@ -1,0 +1,27 @@
+{
+  "name": "cryfi",
+  "homepage": "https://github.com/yatso/cryfi",
+  "authors": [
+    "Thuong",
+    "Michael",
+    "Jeremy",
+    "Yat",
+    "Karen"
+  ],
+  "description": "crying over no wifi",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "bootstrap": "^3.3.6",
+    "angular-route": "^1.5.7",
+    "angular-resource": "^1.5.7"
+  }
+}
