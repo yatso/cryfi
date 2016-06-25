@@ -13,11 +13,15 @@
   <script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular-route/angular-route.min.js"></script>
   <script src="lib/angular-resource/angular-resource.min.js"></script>
-
+  <script src="https://js.arcgis.com/4.0/"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>    
 
   <!-- js lib -->
   <script src="js/app.js"></script>
   <script src="js/controllers/app.controller.js"></script>
+  <script src="js/controllers/cafe.controller.js"></script>
+  <script src="js/services/firebase.service.js"></script>    
 </head>
 <body ng-app="cryfi">
     <!-- nav bar -->
@@ -30,11 +34,15 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#/">Cryfi</a>
+            
         </div>
         <!-- collapse section including links -->
         <div class="collapse navbar-collapse" id="nav-links">
             <ul class="nav navbar-nav navbar-right">
                 <li>
+                    <a href="#/cafe">Cafe</a>
+                </li>
+                <li> 
                     <a href="#" class="underline_from_center">Favorites</a>
                 </li>
             </ul>
