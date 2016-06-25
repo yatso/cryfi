@@ -4,7 +4,8 @@
     angular
         .module('cryfi', [
             'ngRoute',
-            'ngResource'
+            'ngResource',
+            'firebase'
         ])
 
         .config(function($routeProvider) {

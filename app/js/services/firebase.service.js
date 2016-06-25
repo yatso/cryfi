@@ -5,15 +5,17 @@
         .module('cryfi')
         .service('firebaseService', firebaseService);
 
-    firebaseService.$inject = ['dependencies'];
+    firebaseService.$inject = ['$firebaseArray'];
 
     /* @ngInject */
-    function firebaseService(dependencies) {
-        this.func = func;
+    function firebaseService($firebaseArray) {
+        //this.func = func;
+        var _ref = new Firebase("https://cryfi.firebaseio.com/");
+        return $firebaseArray(_ref);
 
         ////////////////
 
-        function func() {
-        }
+//        function func() {
+//        }
     }
 })();
