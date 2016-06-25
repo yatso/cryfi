@@ -42,7 +42,7 @@ require([
   var featureCollection = {
     "layerDefinition": null,
     "featureSet": {
-      "features": [],
+      "features": [],z
       "geometryType": "esriGeometryPoint"
     }
   };
