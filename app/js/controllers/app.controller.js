@@ -5,10 +5,10 @@
         .module('cryfi')
         .controller('AppController', AppController);
 
-    AppController.$inject = ['$scope'];
+    AppController.$inject = ['$scope', 'CafeService'];
 
     /* @ngInject */
-    function AppController($scope) {
+    function AppController($scope, CafeService) {
         // var vm = this;
         // vm.title = 'Controller';
         $scope.title = "CryFi";
@@ -18,6 +18,7 @@
         ////////////////
 
         function activate() {
+            console.log(CafeService.cafes())
         }
     }
 })();
