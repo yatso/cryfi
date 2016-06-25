@@ -279,10 +279,8 @@
               businessId: cafes[i].id,
               businessName: cafes[i].name,
               businessAddress: cafes[i].location["address"][0],
-              businessCoordinates: {
-                latitude: cafes[i].location["coordinate"]["latitude"],
-                longitude: cafes[i].location["coordinate"]["longitude"]
-              },
+              latitude: cafes[i].location["coordinate"]["latitude"],
+              longitude: cafes[i].location["coordinate"]["longitude"],
               businessPhone: cafes[i].phone
             });
         }
