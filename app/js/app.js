@@ -14,6 +14,10 @@
                 templateUrl: 'pages/home.html',
                 controller: 'AppController'
             })
+            .when('/cafe', {
+                templateUrl: 'pages/cafe.html',
+                controller: 'CafeController'
+            })
             .otherwise({redirectTo: '/'});
         })
 })();

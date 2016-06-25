@@ -3,7 +3,7 @@
 
     angular
         .module('cryfi')
-        .service('firebaseService', firebaseService);
+        .factory('firebaseService', firebaseService);
 
     firebaseService.$inject = ['$firebaseArray'];
 

@@ -19,6 +19,7 @@
   <!-- js lib -->
   <script src="js/app.js"></script>
   <script src="js/controllers/app.controller.js"></script>
+  <script src="js/controllers/cafe.controller.js"></script>
   <script src="js/services/firebase.service.js"></script>    
 </head>
 <body ng-app="cryfi">
@@ -32,18 +33,25 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#/">Cryfi</a>
+            
         </div>
         <!-- collapse section including links -->
         <div class="collapse navbar-collapse" id="nav-links">
             <ul class="nav navbar-nav navbar-right">
                 <li>
+                    <a href="#/cafe">Cafe</a>
+                </li>
+                <li> 
                     <a href="#" class="underline_from_center">Favorites</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="row">
-      <div ng-view></div>
+    <div class="container">
+        <div class="row">
+          <div ng-view></div>
+        </div>
     </div>
+    
 </body>
 </html>
