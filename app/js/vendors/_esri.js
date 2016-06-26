@@ -25,7 +25,7 @@ require([
   map = new Map("map", {
     basemap: "satellite",
     center: [-122.08155127581, 37.38815285],
-    zoom: 13
+    zoom: 15
   });
 
   //hide the popup if its outside the map's extent
