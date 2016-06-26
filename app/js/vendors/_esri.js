@@ -1,3 +1,4 @@
+
 var map;
 require([
   "esri/map",
@@ -24,8 +25,8 @@ require([
 
   map = new Map("map", {
     basemap: "satellite",
-    center: [-46.807, 32.553],
-    zoom: 3
+    center: [-122.08155127581, 37.38815285],
+    zoom: 13
   });
 
   //hide the popup if its outside the map's extent
@@ -99,35 +100,69 @@ require([
   //add the feature layer that contains the flickr photos to the map
   map.addLayers([featureLayer]);
 
-function requestPhotos() {
-  //get geotagged photos from flickr
-  //tags=flower&tagmode=all
-  var requestHandle = esriRequest({
-    url: "https://api.flickr.com/services/feeds/geo?&format=json",
-    callbackParamName: "jsoncallback"
-  });
-  requestHandle.then(requestSucceeded, requestFailed);
-}
+  function requestPhotos() {
+    //get geotagged photos from flickr
+    //tags=flower&tagmode=all
+    var requestHandle = esriRequest({
+      url: "https://api.flickr.com/services/feeds/geo?&format=json",
+      callbackParamName: "jsoncallback"
+    });
+    requestHandle.then(requestSucceeded, requestFailed);
+  }
 
-function requestSucceeded(response, io) {
-  //loop through the items and add to the feature layer
-  var features = [];
-  array.forEach(response.items, function(item) {
-    var attr = {};
-    attr["description"] = item.description;
-    attr["title"] = item.title ? item.title : "Flickr Photo";
+  function requestSucceeded(response, io) {
+    //loop through the items and add to the feature layer
+    var features = [];
+    var arr = [
+      {
+        "businessId": "peets-coffee-and-tea-mountain-view",
+        "businessName": "Peet's Coffee & Tea",
+        "businessAddress": "695 W El Camino Real",
+        "latitude": 37.384704,
+        "longitude": -122.082824,
+        "businessPhone": "6506050003"
+      },
+      {
+        "businessId": "starbucks-mountain-view-8",
+        "businessName": "Starbucks",
+        "businessAddress": "750 Castro St",
+        "latitude": 37.3875860361358,
+        "longitude": -122.08306465162,
+        "businessPhone": "6505649255"
+      },
+      {
+        "businessId": "bean-scene-cafe-mountain-view",
+        "businessName": "Bean Scene Cafe",
+        "businessAddress": "500 Castro St",
+        "latitude": 37.390169862591,
+        "longitude": -122.08196434027,
+        "businessPhone": "6509034871"
+      },
+      {
+        "businessId": "mountain-view-tea-village-and-gallery-mountain-view-2",
+        "businessName": "Mountain View Tea Village and Gallery",
+        "businessAddress": "361 Castro St",
+        "latitude": 37.391548,
+        "longitude": -122.08007,
+        "businessPhone": "6502825690"
+      }
+    ]
+    array.forEach(arr, function(item) {
+      var attr = {};
+      attr["description"] = item.businessName;
+      attr["title"] = item.businessName ? item.businessName : "Flickr Photo";
 
-    var geometry = new Point(item);
+      var geometry = new Point(item);
 
-    var graphic = new Graphic(geometry);
-    graphic.setAttributes(attr);
-    features.push(graphic);
-  });
+      var graphic = new Graphic(geometry);
+      graphic.setAttributes(attr);
+      features.push(graphic);
+    });
 
-  featureLayer.applyEdits(features, null, null);
-}
+    featureLayer.applyEdits(features, null, null);
+  }
 
-function requestFailed(error) {
-  console.log('failed');
-}
+  function requestFailed(error) {
+    console.log('failed');
+  }
 });

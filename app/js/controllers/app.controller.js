@@ -18,7 +18,9 @@
         ////////////////
 
         function activate() {
-            console.log(CafeService.cafes())
+            var arr = CafeService.cafes();
+            // mapDrawWithArray(arr);
+            console.log(JSON.stringify(arr));
         }
     }
 })();
