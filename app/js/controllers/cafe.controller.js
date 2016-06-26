@@ -5,16 +5,18 @@
         .module('cryfi')
         .controller('CafeController', CafeController);
 
-    CafeController.$inject = ['$scope', 'firebaseService', 'CafeService'];
+    CafeController.$inject = ['$scope', '$http', 'firebaseService', 'CafeService'];
 
     /* @ngInject */
-    function CafeController($scope, firebaseService, CafeService) {
+    function CafeController($scope, $http, firebaseService, CafeService) {
         // var vm = this;
         // vm.title = 'Controller';
         $scope.title = "CryFi";
         $scope.fbService = firebaseService;
         $scope.addCafe = addCafe;
         $scope.getYelpCafe = getYelpCafe;
+        $scope.upvote = upvote;
+        $scope.get = getFBDB;
 
         activate();
 
@@ -46,6 +48,22 @@
                 addCafeObject(yelpCafes[i]);
                 console.log(yelpCafes[i]);
            }
+        }
+
+        function upvote (id) {
+            var itemRef = new Firebase('https://cryfi.firebaseio.com/' + id +'/voteCount');
+            itemRef.transaction(function(currentVote) {
+                return currentVote+1;
+            });
+        }
+
+        function getFBDB () {
+            $http.get("https://cryfi.firebaseio.com/.json").then(function(result) {
+                $scope.yelpCafeKeys = Object.keys(result.data);
+                $scope.yelpCafes = result.data;
+                // console.log(_keysArr);
+                // console.log('scope', $scope.yelpCafes);
+            })
         }
     }
 })();
