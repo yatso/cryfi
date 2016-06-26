@@ -281,7 +281,8 @@
               businessAddress : cafes[i].location["address"][0],
               latitude : cafes[i].location["coordinate"]["latitude"],
               longitude : cafes[i].location["coordinate"]["longitude"],
-              businessPhone : cafes[i].phone
+              businessPhone : cafes[i].phone,
+              voteCount : 0
             });
         }
             return newAry;

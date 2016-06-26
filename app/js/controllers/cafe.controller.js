@@ -47,6 +47,5 @@
                 console.log(yelpCafes[i]);
            }
         }
-    
     }
 })();
