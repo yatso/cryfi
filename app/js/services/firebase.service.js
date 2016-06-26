@@ -50,5 +50,14 @@
 
             return _deferred.promise;
         }
+
+        function getVoteCount () {
+            var _deferred = $q.defer();
+            $http.get(FIREBASE_URL + ".json").then(function(result) {
+                _deferred.resolve(result);
+            });
+
+            return _deferred.promise;
+        }
     }
 })();

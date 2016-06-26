@@ -5,10 +5,10 @@
         .module('cryfi')
         .controller('CafeController', CafeController);
 
-    CafeController.$inject = ['$scope', '$http', 'firebaseService', 'CafeService'];
+    CafeController.$inject = ['$scope', 'firebaseService', 'CafeService'];
 
     /* @ngInject */
-    function CafeController($scope, $http, firebaseService, CafeService) {
+    function CafeController($scope, firebaseService, CafeService) {
         // var vm = this;
         // vm.title = 'Controller';
         $scope.title = "CryFi";
