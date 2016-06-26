@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row">
-    <div class="col col-xs-12 col-md-10 col-md-offset-1" ng-repeat="cafe in yelpCafeKeys">{{yelpCafes[cafe].businessName}} <button class="btn-info" ng-click="upvote(cafe)">{{yelpCafes[cafe].voteCount}}</button></div>
+    <div class="col col-xs-12 col-md-10 col-md-offset-1" ng-repeat="cafe in yelpCafeKeys">{{yelpCafes[cafe].businessName}} <button class="btn-info" ng-click="upvote(cafe)">+</button> {{yelpCafes[cafe].voteCount}} <button class="btn-danger" ng-click="downvote(cafe)">-</button>
+</div>
 </div>
 <div id="map"></div>
-
