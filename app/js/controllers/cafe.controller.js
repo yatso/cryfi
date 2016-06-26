@@ -12,7 +12,7 @@
         // var vm = this;
         // vm.title = 'Controller';
         $scope.title = "CryFi";
-        $scope.fbService = firebaseService;
+        // $scope.fbService = firebaseService.ref;
         $scope.addCafe = addCafe;
         $scope.getYelpCafe = getYelpCafe;
         $scope.upvote = upvote;
@@ -22,48 +22,46 @@
 
         ////////////////
 
+        var _fbService = firebaseService;
+
         function activate() {
         }
         
         function addCafe() {
-            //pull the cafe from mike's array and add to our firebase db
-            $scope.fbService.$add({
+            _fbService.ref.$add({
                   businessId: $scope.businessId,
                   businessName: $scope.businessName,
                   businessAddress: $scope.businessAddress,
                   latitude: $scope.latitude,
                   longitude: $scope.longitude,
-                  businessPhone: $scope.businessPhone
+                  businessPhone: $scope.businessPhone,
+                  voteCount: 0
             });
         }
 
         function addCafeObject(yelpObject) {
-            //pull the cafe from mike's array and add to our firebase db
-            $scope.fbService.$add(yelpObject);
+            _fbService.ref.$add(yelpObject);
         }
 
         function getYelpCafe () {
            var yelpCafes = CafeService.cafes();
            for (var i=0; i < yelpCafes.length; i++) {
                 addCafeObject(yelpCafes[i]);
-                console.log(yelpCafes[i]);
            }
         }
 
         function upvote (id) {
-            var itemRef = new Firebase('https://cryfi.firebaseio.com/' + id +'/voteCount');
-            itemRef.transaction(function(currentVote) {
-                return currentVote+1;
-            });
+            _fbService.upvote(id);
         }
 
         function getFBDB () {
-            $http.get("https://cryfi.firebaseio.com/.json").then(function(result) {
+            var _promise = _fbService.retrieveCafes();
+
+            _promise.then(function(result) {
                 $scope.yelpCafeKeys = Object.keys(result.data);
                 $scope.yelpCafes = result.data;
-                // console.log(_keysArr);
-                // console.log('scope', $scope.yelpCafes);
-            })
+            });
+            
         }
     }
 })();
