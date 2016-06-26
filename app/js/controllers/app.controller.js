@@ -17,7 +17,7 @@
         $timeout(function() {
             activate();
         }, 10);
-        
+
 
         ////////////////
 
@@ -35,6 +35,7 @@
 
         function upvote (id) {
             _fbService.upvote(id);
+            $scope.yelpCafes[id].voteCount += 1;
         }
     }
 })();
