@@ -29,6 +29,7 @@
             _promise.then(function(result) {
                 $scope.yelpCafeKeys = Object.keys(result.data);
                 $scope.yelpCafes = result.data;
+                console.log('$scope.yelpCafes', $scope.yelpCafes);
             });
         }
 
