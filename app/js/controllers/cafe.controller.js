@@ -35,12 +35,17 @@
             });
         }
 
+        function addCafeObject(yelpObject) {
+            //pull the cafe from mike's array and add to our firebase db
+            $scope.fbService.$add(yelpObject);
+        }
+
         function getYelpCafe () {
            var yelpCafes = CafeService.cafes();
            for (var i=0; i < yelpCafes.length; i++) {
-                addCafe(yelpCafes[i]);
+                addCafeObject(yelpCafes[i]);
                 console.log(yelpCafes[i]);
-           }    
+           }
         }
     
     }
