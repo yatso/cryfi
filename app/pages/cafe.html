@@ -10,7 +10,12 @@
             <input type="submit" value="Add Cafe"><label>add cafe</label>
         </form>
         <button class="btn btn-danger" ng-click="getYelpCafe()">Add Yelp Data</button>
-        <button class="btn btn-info" ng-click="addUpvote()">Add Upvote</button>
+        <button class="btn btn-info" ng-click="upvote()">Add Upvote</button>
+        <button class="btn btn-primary" ng-click="get()">Get data</button>
     </div>
 </div>
-    
+<div class="row">
+    <div class="col">
+        <button class="button-block" ng-repeat="cafe in yelpCafeKeys" ng-click="upvote(cafe)">{{yelpCafes[cafe].businessName}} {{yelpCafes[cafe].voteCount}}</button>
+    </div>
+</div>

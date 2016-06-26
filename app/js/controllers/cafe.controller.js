@@ -5,47 +5,63 @@
         .module('cryfi')
         .controller('CafeController', CafeController);
 
-    CafeController.$inject = ['$scope', 'firebaseService', 'CafeService'];
+    CafeController.$inject = ['$scope', '$http', 'firebaseService', 'CafeService'];
 
     /* @ngInject */
-    function CafeController($scope, firebaseService, CafeService) {
+    function CafeController($scope, $http, firebaseService, CafeService) {
         // var vm = this;
         // vm.title = 'Controller';
         $scope.title = "CryFi";
-        $scope.fbService = firebaseService;
+        // $scope.fbService = firebaseService.ref;
         $scope.addCafe = addCafe;
         $scope.getYelpCafe = getYelpCafe;
+        $scope.upvote = upvote;
+        $scope.get = getFBDB;
 
         activate();
 
         ////////////////
 
+        var _fbService = firebaseService;
+
         function activate() {
         }
         
         function addCafe() {
-            //pull the cafe from mike's array and add to our firebase db
-            $scope.fbService.$add({
+            _fbService.ref.$add({
                   businessId: $scope.businessId,
                   businessName: $scope.businessName,
                   businessAddress: $scope.businessAddress,
                   latitude: $scope.latitude,
                   longitude: $scope.longitude,
-                  businessPhone: $scope.businessPhone
+                  businessPhone: $scope.businessPhone,
+                  voteCount: 0
             });
         }
 
         function addCafeObject(yelpObject) {
-            //pull the cafe from mike's array and add to our firebase db
-            $scope.fbService.$add(yelpObject);
+            _fbService.ref.$add(yelpObject);
         }
 
         function getYelpCafe () {
            var yelpCafes = CafeService.cafes();
            for (var i=0; i < yelpCafes.length; i++) {
                 addCafeObject(yelpCafes[i]);
-                console.log(yelpCafes[i]);
            }
+        }
+
+        function upvote (id) {
+            _fbService.upvote(id);
+        }
+
+        function getFBDB () {
+            var _promise = _fbService.retrieveCafes();
+
+            _promise.then(function(result) {
+                $scope.yelpCafeKeys = Object.keys(result.data);
+                $scope.yelpCafes = result.data;
+            });
+            
         }
     }
 })();
