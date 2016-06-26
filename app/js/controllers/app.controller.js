@@ -13,6 +13,8 @@
         // vm.title = 'Controller';
         $scope.title = "CryFi";
         $scope.upvote = upvote;
+        //Added by Karen
+        $scope.downvote = downvote;
 
         $timeout(function() {
             activate();
@@ -36,6 +38,12 @@
         function upvote (id) {
             _fbService.upvote(id);
             $scope.yelpCafes[id].voteCount += 1;
+        }
+        
+        //Added by Karen
+        function downvote (id) {
+            _fbService.downvote(id);
+            $scope.yelpCafes[id].voteCount -= 1;
         }
     }
 })();

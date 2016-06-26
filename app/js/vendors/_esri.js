@@ -1,4 +1,7 @@
 var map;
+image = "";
+//console.log(yelpCafes[id].voteCount);
+
 require([
   "esri/map",
   "esri/layers/FeatureLayer",
@@ -6,6 +9,8 @@ require([
   "esri/request",
   "esri/geometry/Point",
   "esri/graphic",
+  "esri/symbols/PictureMarkerSymbol",
+  "esri/renderers/ClassBreaksRenderer",
   "dojo/on",
   "dojo/_base/array",
   "dojo/domReady!"
@@ -16,6 +21,8 @@ require([
   esriRequest,
   Point,
   Graphic,
+  PictureMarkerSymbol,
+  ClassBreaksRenderer,
   on,
   array
 ) {
@@ -38,7 +45,7 @@ require([
       }
     }
   });
-
+    
   //create a feature collection for the flickr photos
   var featureCollection = {
     "layerDefinition": null,
@@ -55,7 +62,7 @@ require([
         "type": "simple",
         "symbol": {
           "type": "esriPMS",
-          "url": "images/wifi_3_ltblue.png",
+          "url": image,
           "contentType": "image/png",
 //        "width": 15,
 //        "height": 15
@@ -76,9 +83,13 @@ require([
       "name": "title",
       "alias": "Title",
       "type": "esriFieldTypeString"
+    },
+    {
+      "name": "voteCount",
+      "alias": "voteCount",
+      "type": "esriFieldTypeInteger"
     }]
   };
-
   //define a popup template
   var popupTemplate = new PopupTemplate({
     title: "{title}",
@@ -90,6 +101,18 @@ require([
     id: 'flickrLayer',
     infoTemplate: popupTemplate
   });
+  
+  var symbol = new PictureMarkerSymbol(image, 64, 64);
+  var renderer = new ClassBreaksRenderer(symbol, "voteCount");
+      
+  //var picBaseUrl = "https://static.arcgis.com/images/Symbols/Shapes/";
+   var weak = new PictureMarkerSymbol("images/wifi_1_ltblue.png", 64, 64).setOffset(0, 15);
+   var medium = new PictureMarkerSymbol("images/wifi_2_ltblue.png", 64, 64).setOffset(0, 15);
+   var strong = new PictureMarkerSymbol("images/wifi_3_ltblue.png", 64, 64).setOffset(0, 15);
+   renderer.addBreak(0, 5, weak);
+   renderer.addBreak(5, 10, medium);
+   renderer.addBreak(10, 15, strong);
+   featureLayer.setRenderer(renderer);
 
   //associate the features with the popup on click
   featureLayer.on("click", function(evt) {
@@ -123,8 +146,8 @@ function requestSucceeded(response, io) {
     array.forEach(arr, function(item) {
       var attr = {};
       attr["description"] = item.businessName;
-      attr["title"] = item.businessName ? item.businessName : "Flickr Photo";
-
+      attr["title"] = item.businessName ? item.businessName : "Business";
+      attr["voteCount"] = item.voteCount;
       var geometry = new Point(item);
 
       var graphic = new Graphic(geometry);
