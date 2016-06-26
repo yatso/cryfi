@@ -22,3 +22,36 @@
 .container-fluid {
     padding: 0px;
 }
+
+.list-items {
+    padding:20px;
+}
+
+.vote-count {
+    font-weight: 800;
+    font-size: 1.75em;
+    color: grey;
+}
+
+.btn-vote {
+    width: 50px;
+    height: 30px;
+    border: 0;
+}
+
+.btn-vote-count {
+    width: 50px;
+    height: 30px;
+    border: 0;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.instruction {
+    padding-left: 20px;
+    color: grey;
+}
+
+.bold {
+    color: black;
+}
