@@ -26,16 +26,21 @@
         function addCafe() {
             //pull the cafe from mike's array and add to our firebase db
             $scope.fbService.$add({
-                businessName: $scope.businessName,
-                  businessAddress: $scope.businessName,
-                  latitude: $scope.businessName,
-                  longitude: $scope.businessName,
-                  businessPhone: $scope.businessName
+                  businessId: $scope.businessId,
+                  businessName: $scope.businessName,
+                  businessAddress: $scope.businessAddress,
+                  latitude: $scope.latitude,
+                  longitude: $scope.longitude,
+                  businessPhone: $scope.businessPhone
             });
         }
 
         function getYelpCafe () {
-            console.log(CafeService.cafes());
+           var yelpCafes = CafeService.cafes();
+           for (var i=0; i < yelpCafes.length; i++) {
+                addCafe(yelpCafes[i]);
+                console.log(yelpCafes[i]);
+           }    
         }
     
     }

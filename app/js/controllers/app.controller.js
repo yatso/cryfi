@@ -18,7 +18,7 @@
         ////////////////
 
         function activate() {
-            console.log(CafeService.cafes())
+//            console.log(JSON.stringify(CafeService.cafes()));
         }
     }
 })();
