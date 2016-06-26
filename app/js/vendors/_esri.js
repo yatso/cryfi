@@ -23,7 +23,8 @@ require([
   var featureLayer;
 
   map = new Map("map", {
-    basemap: "satellite",
+//    basemap: "satellite",
+    basemap: "dark-gray",  
     center: [-122.08155127581, 37.38815285],
     zoom: 15
   });
@@ -54,10 +55,12 @@ require([
         "type": "simple",
         "symbol": {
           "type": "esriPMS",
-          "url": "images/wifi_3.png",
+          "url": "images/wifi_3_ltblue.png",
           "contentType": "image/png",
-          "width": 15,
-          "height": 15
+//        "width": 15,
+//        "height": 15
+          "width": 40,
+          "height": 40
         }
       }
     },

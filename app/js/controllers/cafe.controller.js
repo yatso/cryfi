@@ -63,5 +63,15 @@
             });
             
         }
+        
+        function addUpvote () {
+            var fredRankRef = new Firebase('https://cryfi.firebaseio.com/');
+fredRankRef.transaction(function(currentRank) {
+   // If /users/fred/rank has never been set, currentRank will be null.
+    console.log("add up vote button clicked!");
+  return currentRank+1;
+});
+        }
+        
     }
 })();
