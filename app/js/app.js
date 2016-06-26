@@ -276,12 +276,12 @@
         })
           for (var i = 0; i < cafes.length; i++){
             newAry.push({
-              "businessId" : cafes[i].id,
-              "businessName" : cafes[i].name,
-              "businessAddress" : cafes[i].location["address"][0],
-              "latitude" : cafes[i].location["coordinate"]["latitude"],
-              "longitude" : cafes[i].location["coordinate"]["longitude"],
-              "businessPhone" : cafes[i].phone
+              businessId : cafes[i].id,
+              businessName : cafes[i].name,
+              businessAddress : cafes[i].location["address"][0],
+              latitude : cafes[i].location["coordinate"]["latitude"],
+              longitude : cafes[i].location["coordinate"]["longitude"],
+              businessPhone : cafes[i].phone
             });
         }
             return newAry;
