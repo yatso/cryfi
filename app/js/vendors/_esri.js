@@ -24,8 +24,8 @@ require([
 
   map = new Map("map", {
     basemap: "satellite",
-    center: [-46.807, 32.553],
-    zoom: 3
+    center: [-122.08155127581, 37.38815285],
+    zoom: 15
   });
 
   //hide the popup if its outside the map's extent
@@ -111,20 +111,27 @@ function requestPhotos() {
 
 function requestSucceeded(response, io) {
   //loop through the items and add to the feature layer
-  var features = [];
-  array.forEach(response.items, function(item) {
-    var attr = {};
-    attr["description"] = item.description;
-    attr["title"] = item.title ? item.title : "Flickr Photo";
+  var arr = [];
+  $.get( "https://cryfi.firebaseio.com/.json", function (data) {
+    for (key in data) {
+      arr.push(data[key]);
+    };
+    var features = [];
+    array.forEach(arr, function(item) {
+      var attr = {};
+      attr["description"] = item.businessName;
+      attr["title"] = item.businessName ? item.businessName : "Flickr Photo";
 
-    var geometry = new Point(item);
+      var geometry = new Point(item);
 
-    var graphic = new Graphic(geometry);
-    graphic.setAttributes(attr);
-    features.push(graphic);
+      var graphic = new Graphic(geometry);
+      graphic.setAttributes(attr);
+      features.push(graphic);
+    });
+
+    featureLayer.applyEdits(features, null, null);
   });
 
-  featureLayer.applyEdits(features, null, null);
 }
 
 function requestFailed(error) {
