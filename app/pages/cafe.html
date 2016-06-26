@@ -2,14 +2,14 @@
     <div class="col">
     <h1>{{title}}</h1>
         <form ng-submit="addCafe()">
-            <input type="text" ng-model="businessName">
-            <input type="text" ng-model="businessAddress">
-            <input type="text" ng-model="latitude">
-            <input type="text" ng-model="longitude">
-            <input type="text" ng-model="businessPhone">
-            <input type="submit" value="Add Cafe">
+            <input type="text" ng-model="businessName"><label>business name</label>
+            <input type="text" ng-model="businessAddress"><label>business address</label>
+            <input type="text" ng-model="latitude"><label>latitude</label>
+            <input type="text" ng-model="longitude"><label>longitude</label>
+            <input type="text" ng-model="businessPhone"><label>business phone</label>
+            <input type="submit" value="Add Cafe"><label>add cafe</label>
         </form>
-        <button class="btn btn-alert" ng-click="getYelpCafe()">Add Yelp Data</button>
+        <button class="btn btn-danger" ng-click="getYelpCafe()">Add Yelp Data</button>
     </div>
 </div>
     
