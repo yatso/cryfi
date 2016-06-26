@@ -1,10 +1,19 @@
 <div class="row">
   <div class="col-xs-12 col-md-10 col-md-offset-1">
     <div id="map"></div>
+    <div class="instruction">
+        Upvote if cafe has <span class="bold">BOTH</span> good wifi and power outlets
+    </div>
   </div>
 </div>
 <div class="row">
-    <div class="col col-xs-12 col-md-10 col-md-offset-1" ng-repeat="cafe in yelpCafeKeys">{{yelpCafes[cafe].businessName}} <button class="btn-info" ng-click="upvote(cafe)">+</button> {{yelpCafes[cafe].voteCount}} <button class="btn-danger" ng-click="downvote(cafe)">-</button>
+
+    <div class="col col-xs-12 col-md-10 col-md-offset-1" ng-repeat="cafe in yelpCafeKeys">
+    <div class="list-items"> 
+        <h3>{{yelpCafes[cafe].businessName}}</h3> <button class="btn-info btn-vote" ng-click="upvote(cafe)">+</button> 
+        <button class="btn-vote-count">{{yelpCafes[cafe].voteCount}}</button> <button class="btn-danger btn-vote" ng-click="downvote(cafe)">-</button>
+    </div>    
+    <hr>
 </div>
 </div>
 <div id="map"></div>
