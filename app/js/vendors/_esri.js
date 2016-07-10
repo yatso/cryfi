@@ -144,6 +144,7 @@ function requestSucceeded(response, io) {
     };
     var features = [];
     array.forEach(arr, function(item) {
+      console.log(item);
       var attr = {};
       attr["description"] = item.businessName;
       attr["title"] = item.businessName ? item.businessName : "Business";
