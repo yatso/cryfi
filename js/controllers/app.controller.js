@@ -38,7 +38,6 @@
         function upvote (id) {
             _fbService.upvote(id);
             $scope.yelpCafes[id].voteCount += 1;
-            map.load();
         }
         
         //Added by Karen
