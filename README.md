@@ -4,7 +4,7 @@ At the angelHack hackathon hosted by HP in Sunnyvale, we were all crying for som
 <a href="https://yatso.github.io/cryfi/"><img src="images/Cryfi_macbook_mockup.png" width="550px">
 </a>
 
-# Demo: 
+# Live Demo 
 
 [GitHub Pages Host](https://yatso.github.io/cryfi/)
 
